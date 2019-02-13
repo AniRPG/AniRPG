@@ -10,6 +10,11 @@ namespace AniRPG.Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<Location> Transitions { get; private set;}
+        public ICollection<Location> Transitions { get; private set; }
+
+        Location ()
+        {
+            Transitions = new HashSet<Location>();
+        }
     }
 }

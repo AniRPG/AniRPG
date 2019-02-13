@@ -12,7 +12,7 @@ namespace AniRPG.Domain.Entities
         public string Description { get; set; }
         public ICollection<Location> Transitions { get; private set; }
 
-        Location ()
+        public Location ()
         {
             Transitions = new HashSet<Location>();
         }

@@ -4,7 +4,7 @@ using System.Text;
 using FluentValidation;
 using AniRPG.Application.Game.MapSystem.Constants;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Location.Commands
+namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands
 {
     public class CreateLocationCommandValidator : AbstractValidator<CreateLocationCommand>
     {

@@ -7,7 +7,7 @@ using AniRPG.Application.Game.MapSystem.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Location.Commands
+namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands
 {
     public class CreateLocationCommandHandler : AsyncRequestHandler<CreateLocationCommand>
     {

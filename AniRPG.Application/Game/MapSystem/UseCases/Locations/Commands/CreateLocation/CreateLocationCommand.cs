@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Location.Commands
+namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands
 {
     public class CreateLocationCommand : IRequest
     {

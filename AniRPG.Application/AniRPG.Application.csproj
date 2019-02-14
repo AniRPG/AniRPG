@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Game\MapSystem\UseCases\Location\Models\" />
-    <Folder Include="Game\MapSystem\UseCases\Location\Queries\" />
+    <Folder Include="Game\MapSystem\UseCases\Locations\Models\" />
   </ItemGroup>
 
 </Project>

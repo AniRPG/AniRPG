@@ -6,7 +6,7 @@ using AniRPG.Domain.Entities;
 
 namespace AniRPG.Application.Game.MapSystem.Repositories
 {
-    public interface ILocationRepository
+    public interface IMapSystemLocationRepository
     {
         Task CreateLocation(Location location);
     }

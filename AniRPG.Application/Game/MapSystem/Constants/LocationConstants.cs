@@ -6,7 +6,7 @@ namespace AniRPG.Application.Game.MapSystem.Constants
 {
     public static class LocationConstants
     {
-        public const int LocationNameMaxLength = 60;
-        public const int LocationNameMinLength = 2;
+        public const int NameMaxLength = 60;
+        public const int NameMinLength = 2;
     }
 }

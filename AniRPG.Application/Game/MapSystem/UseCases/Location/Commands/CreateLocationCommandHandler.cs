@@ -11,9 +11,9 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Location.Commands
 {
     public class CreateLocationCommandHandler : AsyncRequestHandler<CreateLocationCommand>
     {
-        private readonly ILocationRepository _locationRepository;
+        private readonly IMapSystemLocationRepository _locationRepository;
 
-        public CreateLocationCommandHandler(ILocationRepository locationRepository)
+        public CreateLocationCommandHandler(IMapSystemLocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
         }

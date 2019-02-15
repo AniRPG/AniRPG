@@ -11,5 +11,6 @@ namespace AniRPG.Application.Game.MapSystem.Repositories
         Task CreateLocation(Location location);
         Task DeleteLocation(int locationId);
         Task<Location> GetLocation(int locationId);
+        Task<IEnumerable<Location>> GetAllLocations();
     }
 }

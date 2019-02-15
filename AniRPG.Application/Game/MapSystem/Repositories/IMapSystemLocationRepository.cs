@@ -8,9 +8,10 @@ namespace AniRPG.Application.Game.MapSystem.Repositories
 {
     public interface IMapSystemLocationRepository
     {
-        Task CreateLocation(Location location);
+        Task AddLocation(Location location);
         Task DeleteLocation(int locationId);
         Task<Location> GetLocation(int locationId);
         Task<IEnumerable<Location>> GetAllLocations();
+        Task UpdateLocation(Location location);
     }
 }

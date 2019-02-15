@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AniRPG.Application.Game.MapSystem.Exceptions
+namespace AniRPG.Application.Game.Common.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

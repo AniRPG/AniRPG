@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using AniRPG.Domain.Entities;
 using AniRPG.Application.Game.MapSystem.Repositories;
-using AniRPG.Application.Game.MapSystem.Exceptions;
+using AniRPG.Application.Game.Common.Exceptions;
 using System.Threading;
 using System.Threading.Tasks;
 

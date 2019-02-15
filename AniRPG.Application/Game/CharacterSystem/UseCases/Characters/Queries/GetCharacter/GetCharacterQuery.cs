@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using AniRPG.Domain.Entities;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Characters.Queries.GetCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Queries.GetCharacter
 {
     public class GetCharacterQuery : IRequest<Character>
     {

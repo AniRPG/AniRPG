@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using MediatR;
 using AniRPG.Domain.Entities;
-using AniRPG.Application.Game.MapSystem.Repositories;
-using AniRPG.Application.Game.MapSystem.Exceptions;
+using AniRPG.Application.Game.CharacterSystem.Repositories;
+using AniRPG.Application.Game.Common.Exceptions;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Characters.Queries.GetCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Queries.GetCharacter
 {
     public class GetCharacterQueryHandler : IRequestHandler<GetCharacterQuery, Character>
     {
-        private readonly IMapSystemCharacterRepository _characterRepository;
+        private readonly ICharacterSystemCharacterRepository _characterRepository;
 
-        public GetCharacterQueryHandler(IMapSystemCharacterRepository characterRepository)
+        public GetCharacterQueryHandler(ICharacterSystemCharacterRepository characterRepository)
         {
             _characterRepository = characterRepository;
         }

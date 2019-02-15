@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Characters.Commands.CreateCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Commands.CreateCharacter
 {
     public class CreateCharacterCommand : IRequest
     {

@@ -24,7 +24,7 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands
             {
                 Name = request.Name
             };
-            await _locationRepository.CreateLocation(location);
+            await _locationRepository.AddLocation(location);
         }
     }
 }

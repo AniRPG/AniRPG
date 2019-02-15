@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Game\MapSystem\UseCases\Characters\Models\" />
+    <Folder Include="Game\CharacterSystem\UseCases\Characters\Models\" />
   </ItemGroup>
 
 </Project>

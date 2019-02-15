@@ -8,7 +8,7 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands.UpdateLo
 {
     public class UpdateLocationCommandValidator : AbstractValidator<UpdateLocationCommand>
     {
-        UpdateLocationCommandValidator()
+        public UpdateLocationCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty().MaximumLength(LocationConstants.NameMaxLength)
                 .MinimumLength(LocationConstants.NameMinLength);

@@ -12,16 +12,16 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Queries.GetLocati
 {
     public class GetLocationQueryHandler : IRequestHandler<GetLocationQuery, Location>
     {
-        private readonly IMapSystemLocationRepository _locatinRepository;
+        private readonly IMapSystemLocationRepository _locationRepository;
 
         public GetLocationQueryHandler(IMapSystemLocationRepository locationRepository)
         {
-            _locatinRepository = locationRepository;
+            _locationRepository = locationRepository;
         }
 
         public async Task<Location> Handle(GetLocationQuery request, CancellationToken cancellationToken)
         {
-            var location = await _locatinRepository.GetLocation(request.LocationId);
+            var location = await _locationRepository.GetLocation(request.LocationId);
 
             if (location == null)
                 throw new EntityNotFoundException("Location", request.LocationId);

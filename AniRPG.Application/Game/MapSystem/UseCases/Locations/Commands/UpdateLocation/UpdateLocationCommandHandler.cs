@@ -13,7 +13,7 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands.UpdateLo
     {
         private readonly IMapSystemLocationRepository _locationRepository;
 
-        UpdateLocationCommandHandler(IMapSystemLocationRepository locationRepository)
+        public UpdateLocationCommandHandler(IMapSystemLocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
         }

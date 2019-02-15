@@ -65,6 +65,9 @@
     <Compile Include="UI\Dialogs\CreateTransitionDialog.xaml.cs">
       <DependentUpon>CreateTransitionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\DeleteDialog.xaml.cs">
+      <DependentUpon>DeleteDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\LocationEditor.xaml.cs">
       <DependentUpon>LocationEditor.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\DeleteDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\UserControls\LocationEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +143,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AniRPG.Domain\AniRPG.Domain.csproj">
+      <Project>{2b5698d0-4fe8-4e21-8854-c40aac8ad1ed}</Project>
+      <Name>AniRPG.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

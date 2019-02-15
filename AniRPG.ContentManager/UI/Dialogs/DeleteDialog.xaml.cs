@@ -1,5 +1,4 @@
-﻿using AniRPG.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +15,15 @@ using System.Windows.Shapes;
 namespace AniRPG.ContentManager.UI.Dialogs
 {
     /// <summary>
-    /// Логика взаимодействия для CreateTransitionDialog.xaml
+    /// Логика взаимодействия для DeleteDialog.xaml
     /// </summary>
-    public partial class CreateTransitionDialog : Window
+    public partial class DeleteDialog : Window
     {
-        public CreateTransitionDialog(IEnumerable<Location> endpoints)
+        public DeleteDialog(string deleteWarningMessage = "Вы точно хотите удалить?")
         {
             InitializeComponent();
 
-            EndpointsComboBox.ItemsSource = endpoints;
+            MessageTextBox.Text = deleteWarningMessage;
         }
 
         private void AcceptButtonClickedHandler(object sender, RoutedEventArgs e)

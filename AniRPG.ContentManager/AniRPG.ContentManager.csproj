@@ -59,7 +59,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Windows\Main\MainWindow.xaml.cs">
+    <Compile Include="UI\Dialogs\CreateLocationDialog.xaml.cs">
+      <DependentUpon>CreateLocationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\CreateTransitionDialog.xaml.cs">
+      <DependentUpon>CreateTransitionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\LocationEditor.xaml.cs">
+      <DependentUpon>LocationEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\LocationPreviewsList.xaml.cs">
+      <DependentUpon>LocationPreviewsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\TransitionsEditor.xaml.cs">
+      <DependentUpon>TransitionsEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\LocationsWindow.xaml.cs">
+      <DependentUpon>LocationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -90,7 +108,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\Windows\Main\MainWindow.xaml">
+    <Page Include="UI\Dialogs\CreateLocationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\CreateTransitionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UserControls\LocationEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UserControls\LocationPreviewsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UserControls\TransitionsEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\LocationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

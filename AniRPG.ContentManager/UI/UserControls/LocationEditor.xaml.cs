@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AniRPG.ContentManager.UI.Windows.Main
+namespace AniRPG.ContentManager.UI.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LocationEditor.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LocationEditor : UserControl
     {
-        public MainWindow()
+        public LocationEditor()
         {
             InitializeComponent();
         }

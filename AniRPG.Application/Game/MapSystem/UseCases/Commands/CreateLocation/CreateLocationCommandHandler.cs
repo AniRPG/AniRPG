@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Domain.Entities;
-using AniRPG.Application.Game.MapSystem.Repositories;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AniRPG.Application.Game.MapSystem.Repositories;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands
+namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.CreateLocation
 {
     public class CreateLocationCommandHandler : AsyncRequestHandler<CreateLocationCommand>
     {

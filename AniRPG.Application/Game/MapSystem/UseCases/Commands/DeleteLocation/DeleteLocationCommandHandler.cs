@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Application.Game.MapSystem.Repositories;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AniRPG.Application.Game.MapSystem.Repositories;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands.DeleteLocation
+namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.DeleteLocation
 {
     public class DeleteLocationCommandHandler : AsyncRequestHandler<DeleteLocationCommand>
     {

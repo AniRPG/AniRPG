@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
+﻿using System.Collections.Generic;
 using AniRPG.Domain.Entities;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands.UpdateLocation
+namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.UpdateLocation
 {
     public class UpdateLocationCommand : IRequest
     {

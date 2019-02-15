@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AniRPG.Application.Game.CharacterSystem.Constants;
 using FluentValidation;
-using AniRPG.Application.Game.CharacterSystem.Constants;
 
-namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Commands.CreateCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Commands.CreateCharacter
 {
     public class CreateCharacterCommandValidator : AbstractValidator<CreateCharacterCommand>
     {

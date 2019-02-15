@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Domain.Entities;
-using AniRPG.Application.Game.MapSystem.Repositories;
-using AniRPG.Application.Game.Common.Exceptions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AniRPG.Application.Game.Common.Exceptions;
+using AniRPG.Application.Game.MapSystem.Repositories;
+using AniRPG.Domain.Entities;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Queries.GetLocation
+namespace AniRPG.Application.Game.MapSystem.UseCases.Queries.GetLocation
 {
     public class GetLocationQueryHandler : IRequestHandler<GetLocationQuery, Location>
     {

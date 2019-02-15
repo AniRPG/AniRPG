@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Application.Game.MapSystem.Repositories;
-using AniRPG.Application.Game.Common.Exceptions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AniRPG.Application.Game.Common.Exceptions;
+using AniRPG.Application.Game.MapSystem.Repositories;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Commands.UpdateLocation
+namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.UpdateLocation
 {
     public class UpdateLocationCommandHandler : AsyncRequestHandler<UpdateLocationCommand>
     {

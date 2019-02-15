@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AniRPG.Application.Game.CharacterSystem.Repositories;
 using AniRPG.Application.Game.Common.Exceptions;
+using MediatR;
 
-namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Commands.CreateCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Commands.CreateCharacter
 {
     public class CreateCharacterCommandHandler : AsyncRequestHandler<CreateCharacterCommand>
     {

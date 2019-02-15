@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Application.Game.MapSystem.UseCases.Locations.Models;
-using AniRPG.Application.Game.MapSystem.Repositories;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
+using AniRPG.Application.Game.MapSystem.Repositories;
+using AniRPG.Application.Game.MapSystem.UseCases.Models;
+using MediatR;
 
-namespace AniRPG.Application.Game.MapSystem.UseCases.Locations.Queries.GetAllLocationsPreview
+namespace AniRPG.Application.Game.MapSystem.UseCases.Queries.GetAllLocationsPreview
 {
     class GetAllLocationsPreviewQueryHandler : IRequestHandler<GetAllLocationsPreviewQuery, IEnumerable<LocationPreviewModel>>
     {

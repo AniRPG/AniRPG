@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
-using AniRPG.Domain.Entities;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using AniRPG.Application.Game.CharacterSystem.Repositories;
 using AniRPG.Application.Game.Common.Exceptions;
-using System.Threading.Tasks;
-using System.Threading;
+using AniRPG.Domain.Entities;
+using MediatR;
 
-namespace AniRPG.Application.Game.CharacterSystem.UseCases.Characters.Queries.GetCharacter
+namespace AniRPG.Application.Game.CharacterSystem.UseCases.Queries.GetCharacter
 {
     public class GetCharacterQueryHandler : IRequestHandler<GetCharacterQuery, Character>
     {

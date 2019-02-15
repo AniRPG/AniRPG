@@ -8,8 +8,4 @@
     <ProjectReference Include="..\AniRPG.Domain\AniRPG.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Game\CharacterSystem\UseCases\Characters\Models\" />
-  </ItemGroup>
-
 </Project>

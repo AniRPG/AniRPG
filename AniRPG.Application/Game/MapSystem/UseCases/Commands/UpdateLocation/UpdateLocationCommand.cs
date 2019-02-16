@@ -9,10 +9,5 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.UpdateLocation
         public int LocationId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<Location> Transitions { get; private set; }
-        public UpdateLocationCommand()
-        {
-            Transitions = new HashSet<Location>();
-        }
     }
 }

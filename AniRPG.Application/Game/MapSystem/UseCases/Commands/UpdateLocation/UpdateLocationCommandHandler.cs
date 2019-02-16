@@ -25,10 +25,6 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.UpdateLocation
             location.Name = request.Name;
             location.Description = request.Description;
 
-            location.Transitions.Clear();
-            foreach (var transition in request.Transitions)
-                location.Transitions.Add(transition);
-
             await _locationRepository.UpdateLocation(location);
         }
     }

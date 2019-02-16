@@ -8,4 +8,10 @@
     <ProjectReference Include="..\AniRPG.Domain\AniRPG.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Activities">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Activities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

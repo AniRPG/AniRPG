@@ -6,5 +6,6 @@ namespace AniRPG.Application.Game.MapSystem.Repositories
     public interface IMapSystemCharacterRepository
     {
         Task<Character> GetCharacter(int characterId);
+        Task UpdateCharacter(Character character);
     }
 }

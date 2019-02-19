@@ -7,7 +7,7 @@ using MediatR;
 
 namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.MoveCharacterByTransition
 {
-    public class MoveCharacterByTransitionCommandHandler : AsyncRequestHandler<MoveCharacterByTransitionCommand>
+    public class MoveCharacterByTransitionCommandHandler : IRequestHandler<MoveCharacterByTransitionCommand, Unit>
     {
         private readonly IMapSystemTransitionRepository _transitionRepository;
         private readonly IMapSystemCharacterRepository _characterRepository;
@@ -20,7 +20,7 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.MoveCharacterByTra
             _characterRepository = characterRepository;
         }
 
-        protected override async Task Handle(MoveCharacterByTransitionCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(MoveCharacterByTransitionCommand request, CancellationToken cancellationToken)
         {
             var character = await _characterRepository.GetCharacter(request.CharacterId);
             if (character == null)
@@ -34,6 +34,9 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.MoveCharacterByTra
                 throw new CharacterCurrentLocationMismatchException(request.CharacterId, request.TransitionId);
 
             character.CurrentLocation = transition.To;
+            await _characterRepository.UpdateCharacter(character);
+
+            return Unit.Value;
         }
     }
 }

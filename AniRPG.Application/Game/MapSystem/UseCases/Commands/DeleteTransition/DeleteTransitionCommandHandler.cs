@@ -5,7 +5,7 @@ using MediatR;
 
 namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.DeleteTransition
 {
-    public class DeleteTransitionCommandHandler : AsyncRequestHandler<DeleteTransitionCommand>
+    public class DeleteTransitionCommandHandler : IRequestHandler<DeleteTransitionCommand, Unit>
     {
         private readonly IMapSystemTransitionRepository _transitionRepository;
 
@@ -14,9 +14,10 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.DeleteTransition
             _transitionRepository = transitionRepository;
         }
 
-        protected override async Task Handle(DeleteTransitionCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteTransitionCommand request, CancellationToken cancellationToken)
         {
             await _transitionRepository.DeleteTransition(request.TransitionId);
+            return Unit.Value;
         }
     }
 }

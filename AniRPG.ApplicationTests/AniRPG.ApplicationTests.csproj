@@ -82,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\MapSystem\UseCases\Commands\CreateTransitionTests.cs" />
+    <Compile Include="Game\MapSystem\UseCases\Commands\DeleteTransitionTests.cs" />
+    <Compile Include="Game\MapSystem\UseCases\Commands\MoveCharacterByTransitionTests.cs" />
+    <Compile Include="Game\MapSystem\UseCases\Queries\GetTransitionsFromLocationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

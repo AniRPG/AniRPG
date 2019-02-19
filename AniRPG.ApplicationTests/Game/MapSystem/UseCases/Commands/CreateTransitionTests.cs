@@ -14,30 +14,57 @@ namespace AniRPG.ApplicationTests.Game.MapSystem.UseCases.Commands
     [TestClass]
     public class CreateTransitionTests
     {
+        private IMapSystemLocationRepository _locationRepository;
+        private IMapSystemTransitionRepository _transitionRepository;
+        private Transition _lastAddedTransition;
+
+        [TestInitialize]
+        public void SetupMocks()
+        {
+            var location1 = new Location {Id = 1};
+            var location2 = new Location {Id = 2};
+            var location3 = new Location {Id = 3};
+
+            var locationRepositoryMock = new Mock<IMapSystemLocationRepository>();
+            locationRepositoryMock
+                .Setup(a => a.GetLocation(It.IsAny<int>()))
+                .ReturnsAsync((int x) =>
+                {
+                    switch (x)
+                    {
+                        case 1:
+                            return location1;
+                        case 2:
+                            return location2;
+                        case 3:
+                            return location3;
+                        default:
+                            return null;
+                    }
+                });
+            _locationRepository = locationRepositoryMock.Object;
+
+            var transitionRepositoryMock = new Mock<IMapSystemTransitionRepository>();
+            transitionRepositoryMock
+                .Setup(a => a.AddTransition(It.IsAny<Transition>()))
+                .Returns(Task.CompletedTask)
+                .Callback((Transition t) => { _lastAddedTransition = t; });
+            transitionRepositoryMock
+                .Setup(a => a.ExistTransitionBetween(1, 2))
+                .ReturnsAsync(true);
+            transitionRepositoryMock
+                .Setup(a => a.ExistTransitionBetween(1, 3))
+                .ReturnsAsync(false);
+            _transitionRepository = transitionRepositoryMock.Object;
+        }
+
         [TestMethod]
         [ExpectedException(typeof(EntityNotFoundException))]
         public async Task FromDoesNotExist_Exception()
         {
-            Location locationFrom = null;
-            var locationTo = new Location {Id = 2};
-            Transition transition = null;
-
-            var locationRepositoryMock = new Mock<IMapSystemLocationRepository>();
-            locationRepositoryMock.Setup(a => a.GetLocation(It.IsAny<int>()))
-                .ReturnsAsync((int x) => x == 1 ? locationFrom : locationTo);
-
-            var transitionRepositoryMock = new Mock<IMapSystemTransitionRepository>();
-            transitionRepositoryMock.Setup(a => a.AddTransition(It.IsAny<Transition>()))
-                .Callback((Transition t) =>
-                {
-                    transition = t;
-                });
-            transitionRepositoryMock.Setup(a => a.ExistTransitionBetween(1, 2)).ReturnsAsync(false);
-
-            var result =
-                await new CreateTransitionCommandHandler(locationRepositoryMock.Object,
-                        transitionRepositoryMock.Object)
-                    .Handle(new CreateTransitionCommand {FromLocationId = 1, ToLocationId = 2},
+            await new CreateTransitionCommandHandler(_locationRepository, _transitionRepository)
+                    .Handle(
+                        new CreateTransitionCommand {FromLocationId = 4, ToLocationId = 2},
                         CancellationToken.None);
         }
 
@@ -45,85 +72,33 @@ namespace AniRPG.ApplicationTests.Game.MapSystem.UseCases.Commands
         [ExpectedException(typeof(EntityNotFoundException))]
         public async Task ToDoesNotExist_Exception()
         {
-            var locationFrom = new Location { Id = 1 };
-            Location locationTo = null;
-            Transition transition = null;
-
-            var locationRepositoryMock = new Mock<IMapSystemLocationRepository>();
-            locationRepositoryMock.Setup(a => a.GetLocation(It.IsAny<int>()))
-                .ReturnsAsync((int x) => x == 1 ? locationFrom : locationTo);
-
-            var transitionRepositoryMock = new Mock<IMapSystemTransitionRepository>();
-            transitionRepositoryMock.Setup(a => a.AddTransition(It.IsAny<Transition>()))
-                .Callback((Transition t) =>
-                {
-                    transition = t;
-                });
-            transitionRepositoryMock.Setup(a => a.ExistTransitionBetween(1, 2)).ReturnsAsync(false);
-
-            var result =
-                await new CreateTransitionCommandHandler(locationRepositoryMock.Object,
-                        transitionRepositoryMock.Object)
-                    .Handle(new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 2 },
-                        CancellationToken.None);
+            await new CreateTransitionCommandHandler(_locationRepository, _transitionRepository)
+                .Handle(
+                    new CreateTransitionCommand { FromLocationId = 2, ToLocationId = 4 },
+                    CancellationToken.None);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ApplicationException))]
         public async Task TransitionAlreadyExistExist_Exception()
         {
-            var locationFrom = new Location { Id = 1 };
-            var locationTo = new Location { Id = 2 };
-            Transition transition = null;
-
-            var locationRepositoryMock = new Mock<IMapSystemLocationRepository>();
-            locationRepositoryMock.Setup(a => a.GetLocation(It.IsAny<int>()))
-                .ReturnsAsync((int x) => x == 1 ? locationFrom : locationTo);
-
-            var transitionRepositoryMock = new Mock<IMapSystemTransitionRepository>();
-            transitionRepositoryMock.Setup(a => a.AddTransition(It.IsAny<Transition>()))
-                .Callback((Transition t) =>
-                {
-                    transition = t;
-                });
-            transitionRepositoryMock.Setup(a => a.ExistTransitionBetween(1, 2)).ReturnsAsync(true);
-
-            var result =
-                await new CreateTransitionCommandHandler(locationRepositoryMock.Object,
-                        transitionRepositoryMock.Object)
-                    .Handle(new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 2 },
-                        CancellationToken.None);
+            await new CreateTransitionCommandHandler(_locationRepository, _transitionRepository)
+                .Handle(
+                    new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 2 },
+                    CancellationToken.None);
         }
 
         [TestMethod]
         public async Task Ok()
         {
-            var locationFrom = new Location { Id = 1 };
-            var locationTo = new Location { Id = 2 };
-            Transition transition = null;
+            await new CreateTransitionCommandHandler(_locationRepository, _transitionRepository)
+                .Handle(
+                    new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 3 },
+                    CancellationToken.None);
 
-            var locationRepositoryMock = new Mock<IMapSystemLocationRepository>();
-            locationRepositoryMock.Setup(a => a.GetLocation(It.IsAny<int>()))
-                .ReturnsAsync((int x) => x == 1 ? locationFrom : locationTo);
-
-            var transitionRepositoryMock = new Mock<IMapSystemTransitionRepository>();
-            transitionRepositoryMock.Setup(a => a.AddTransition(It.IsAny<Transition>()))
-                .Returns((Transition t) =>
-                {
-                    transition = t;
-                    return Task.FromResult(0);
-                });
-            transitionRepositoryMock.Setup(a => a.ExistTransitionBetween(1, 2)).ReturnsAsync(false);
-
-            var result =
-                await new CreateTransitionCommandHandler(locationRepositoryMock.Object,
-                        transitionRepositoryMock.Object)
-                    .Handle(new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 2 },
-                        CancellationToken.None);
-
-            Assert.IsNotNull(transition);
-            Assert.AreEqual(transition.From, locationFrom);
-            Assert.AreEqual(transition.To, locationTo);
+            Assert.IsNotNull(_lastAddedTransition);
+            Assert.AreEqual(_lastAddedTransition.From.Id, 1);
+            Assert.AreEqual(_lastAddedTransition.To.Id, 3);
         }
     }
 }

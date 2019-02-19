@@ -6,9 +6,10 @@ namespace AniRPG.Application.Game.MapSystem.Repositories
 {
     public interface IMapSystemTransitionRepository
     {
-        Task<int> AddTransition(Transition transition);
+        Task AddTransition(Transition transition);
         Task DeleteTransition(int transitionId);
         Task<Transition> GetTransition(int transitionId);
         Task<IEnumerable<Transition>> GetTransitionsFromLocation(int locationId);
+        Task<bool> ExistTransitionBetween(int locationFromId, int locationToId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using AniRPG.Application.Game.Common.Exceptions;
 using AniRPG.Application.Game.MapSystem.Repositories;
@@ -7,7 +8,7 @@ using MediatR;
 
 namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.CreateTransition
 {
-    public class CreateTransitionCommandHandler : AsyncRequestHandler<CreateTransitionCommand>
+    public class CreateTransitionCommandHandler : IRequestHandler<CreateTransitionCommand, Transition>
     {
         private readonly IMapSystemLocationRepository _locationRepository;
         private readonly IMapSystemTransitionRepository _transitionRepository;
@@ -20,7 +21,7 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.CreateTransition
             _transitionRepository = transitionRepository;
         }
 
-        protected override async Task Handle(CreateTransitionCommand request, CancellationToken cancellationToken)
+        public async Task<Transition> Handle(CreateTransitionCommand request, CancellationToken cancellationToken)
         {
             var locationFrom = await _locationRepository.GetLocation(request.FromLocationId);
             if (locationFrom == null)
@@ -30,6 +31,11 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.CreateTransition
             if (locationTo == null)
                 throw new EntityNotFoundException("Location", request.ToLocationId);
 
+            var transitionExist =
+                await _transitionRepository.ExistTransitionBetween(locationFrom.Id, locationTo.Id);
+            if (transitionExist)
+                throw new ApplicationException("Such transition already exist");
+
             var transition = new Transition
             {
                 From = locationFrom,
@@ -37,6 +43,8 @@ namespace AniRPG.Application.Game.MapSystem.UseCases.Commands.CreateTransition
             };
 
             await _transitionRepository.AddTransition(transition);
+
+            return transition;
         }
     }
 }

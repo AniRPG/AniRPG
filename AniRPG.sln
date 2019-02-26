@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniRPG.Domain", "AniRPG.Domain\AniRPG.Domain.csproj", "{2B5698D0-4FE8-4E21-8854-C40AAC8AD1ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniRPG.Application", "AniRPG.Application\AniRPG.Application.csproj", "{3AAE6AF6-BF07-4F98-BC85-E10D3B0EDDB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniRPG.Application", "AniRPG.Application\AniRPG.Application.csproj", "{3AAE6AF6-BF07-4F98-BC85-E10D3B0EDDB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniRPG.ContentManager", "AniRPG.ContentManager\AniRPG.ContentManager.csproj", "{2A7B2B1E-D1C8-45DF-87CC-C9C360A56802}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniRPG.ApplicationTests", "AniRPG.ApplicationTests\AniRPG.ApplicationTests.csproj", "{D7B0F57B-634A-4BE5-8E91-E1089CD46C7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2A7B2B1E-D1C8-45DF-87CC-C9C360A56802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A7B2B1E-D1C8-45DF-87CC-C9C360A56802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A7B2B1E-D1C8-45DF-87CC-C9C360A56802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B0F57B-634A-4BE5-8E91-E1089CD46C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B0F57B-634A-4BE5-8E91-E1089CD46C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B0F57B-634A-4BE5-8E91-E1089CD46C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B0F57B-634A-4BE5-8E91-E1089CD46C7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AniRPG.Domain\AniRPG.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Game\CharacterSystem\UseCases\Characters\Models\" />
+    <Reference Include="System.Activities">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Activities.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

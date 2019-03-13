@@ -8,7 +8,7 @@ using MediatR;
 
 namespace AniRPG.Content.UseCases.Locations.Queries.GetAllLocationsPreview
 {
-    class GetAllLocationsPreviewQueryHandler : IRequestHandler<GetAllLocationsPreviewQuery, IEnumerable<LocationPreviewModel>>
+    public class GetAllLocationsPreviewQueryHandler : IRequestHandler<GetAllLocationsPreviewQuery, IEnumerable<LocationPreviewModel>>
     {
         private readonly IContentLocationRepository _locationRepository;
 

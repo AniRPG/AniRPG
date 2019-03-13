@@ -17,6 +17,7 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
     {
         private readonly IContentLocationRepository _locationRepository;
         private readonly IContentTransitionRepository _transitionRepository;
+        private readonly CreateTransitionCommandHandler _handler;
 
         private Transition _lastAddedTransition;
         
@@ -47,14 +48,15 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
                 .Setup(a => a.ExistTransitionBetween(1, 3))
                 .ReturnsAsync(false);
             _transitionRepository = transitionRepositoryMock.Object;
+
+            _handler = new CreateTransitionCommandHandler(_locationRepository, _transitionRepository);
         }
 
         [Fact]
         public async Task FromDoesNotExist_Exception()
         {
-            var handler = new CreateTransitionCommandHandler(_locationRepository, _transitionRepository);
             var command = new CreateTransitionCommand { FromLocationId = 4, ToLocationId = 2 };
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as EntityNotFoundException;
 
@@ -67,9 +69,8 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
         [Fact]
         public async Task ToDoesNotExist_Exception()
         {
-            var handler = new CreateTransitionCommandHandler(_locationRepository, _transitionRepository);
             var command = new CreateTransitionCommand { FromLocationId = 2, ToLocationId = 4 };
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as EntityNotFoundException;
 
@@ -82,9 +83,8 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
         [Fact]
         public async Task TransitionAlreadyExist_Exception()
         {
-            var handler = new CreateTransitionCommandHandler(_locationRepository, _transitionRepository);
             var command = new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 2 };
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as TransitionAlreadyExistsException;
 
@@ -97,10 +97,9 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
         [Fact]
         public async Task Ok()
         {
-            var handler = new CreateTransitionCommandHandler(_locationRepository, _transitionRepository);
             var command = new CreateTransitionCommand { FromLocationId = 1, ToLocationId = 3 };
 
-            var transition = await handler.Handle(command, CancellationToken.None);
+            var transition = await _handler.Handle(command, CancellationToken.None);
 
             Assert.NotNull(transition);
             Assert.StrictEqual(_lastAddedTransition, transition);

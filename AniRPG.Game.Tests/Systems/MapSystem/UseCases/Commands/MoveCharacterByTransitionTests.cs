@@ -14,6 +14,7 @@ namespace AniRPG.Game.Tests.Systems.MapSystem.UseCases.Commands
     {
         private readonly IMapSystemTransitionRepository _transitionRepository;
         private readonly IMapSystemCharacterRepository _characterRepository;
+        private readonly MoveCharacterByTransitionCommandHandler _handler;
 
         private Character _updatedCharacter;
         
@@ -51,14 +52,15 @@ namespace AniRPG.Game.Tests.Systems.MapSystem.UseCases.Commands
                 .Returns(Task.CompletedTask)
                 .Callback((Character c) => _updatedCharacter = c);
             _characterRepository = characterRepositoryMock.Object;
+
+            _handler = new MoveCharacterByTransitionCommandHandler(_transitionRepository, _characterRepository);
         }
 
         [Fact]
         public async Task CharacterDoesNotExist_Exception()
         {
-            var handler = new MoveCharacterByTransitionCommandHandler(_transitionRepository, _characterRepository);
             var command = new MoveCharacterByTransitionCommand {CharacterId = 2, TransitionId = 1};
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as EntityNotFoundException;
 
@@ -71,9 +73,8 @@ namespace AniRPG.Game.Tests.Systems.MapSystem.UseCases.Commands
         [Fact]
         public async Task TransitionDoesNotExist_Exception()
         {
-            var handler = new MoveCharacterByTransitionCommandHandler(_transitionRepository, _characterRepository);
             var command = new MoveCharacterByTransitionCommand { CharacterId = 1, TransitionId = 5 };
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as EntityNotFoundException;
 
@@ -86,9 +87,8 @@ namespace AniRPG.Game.Tests.Systems.MapSystem.UseCases.Commands
         [Fact]
         public async Task CurrentLocationAndFromMismatch_Exception()
         {
-            var handler = new MoveCharacterByTransitionCommandHandler(_transitionRepository, _characterRepository);
             var command = new MoveCharacterByTransitionCommand { CharacterId = 1, TransitionId = 2 };
-            Task Act() => handler.Handle(command, CancellationToken.None);
+            Task Act() => _handler.Handle(command, CancellationToken.None);
 
             var ex = await Record.ExceptionAsync(Act) as CharacterCurrentLocationMismatchException;
 
@@ -99,10 +99,9 @@ namespace AniRPG.Game.Tests.Systems.MapSystem.UseCases.Commands
         [Fact]
         public async Task Ok()
         {
-            var handler = new MoveCharacterByTransitionCommandHandler(_transitionRepository, _characterRepository);
             var command = new MoveCharacterByTransitionCommand { CharacterId = 1, TransitionId = 1 };
 
-            var res = await handler.Handle(command, CancellationToken.None);
+            var res = await _handler.Handle(command, CancellationToken.None);
 
             Assert.True(res);
             Assert.NotNull(_updatedCharacter);

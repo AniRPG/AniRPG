@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿ using FluentValidation;
 
 namespace AniRPG.Content.UseCases.Locations.Commands.UpdateLocation
 {
@@ -7,12 +7,12 @@ namespace AniRPG.Content.UseCases.Locations.Commands.UpdateLocation
         public UpdateLocationCommandValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty()
-                .MaximumLength(LocationConstants.NameMaxLength)
-                .MinimumLength(LocationConstants.NameMinLength);
+                .MinimumLength(LocationConstants.NameMinLength)
+                .MaximumLength(LocationConstants.NameMaxLength);
+
             RuleFor(x => x.Description)
-                .MaximumLength(LocationConstants.DescriptionMaxLength)
-                .MinimumLength(LocationConstants.DescriptionMinLength);
+                .MinimumLength(LocationConstants.DescriptionMinLength)
+                .MaximumLength(LocationConstants.DescriptionMaxLength);
         }
     }
 }

@@ -7,9 +7,8 @@ namespace AniRPG.Content.UseCases.Locations.Commands.CreateLocation
         public CreateLocationCommandValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty()
-                .MaximumLength(LocationConstants.NameMaxLength)
-                .MinimumLength(LocationConstants.NameMinLength);
+                .MinimumLength(LocationConstants.NameMinLength)
+                .MaximumLength(LocationConstants.NameMaxLength);
         }
     }
 }

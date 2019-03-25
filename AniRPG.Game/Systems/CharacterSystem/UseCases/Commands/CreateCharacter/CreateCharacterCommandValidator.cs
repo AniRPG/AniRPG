@@ -8,7 +8,6 @@ namespace AniRPG.Game.Systems.CharacterSystem.UseCases.Commands.CreateCharacter
         public CreateCharacterCommandValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty()
                 .MaximumLength(CharacterConstants.NameMaxLength)
                 .MinimumLength(CharacterConstants.NameMinLength);
         }

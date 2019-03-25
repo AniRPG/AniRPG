@@ -19,7 +19,7 @@ namespace AniRPG.Game.Systems.CharacterSystem.UseCases.Commands.CreateCharacter
         public async Task<Character> Handle(CreateCharacterCommand request, CancellationToken cancellationToken)
         {
             if (await _characterRepository.CharacterExistsWithName(request.Name))
-                throw new EntityAlreadyExistsException("Character", request.Name);
+                throw new EntityAlreadyExistsException<Character>(nameof(request.Name), request.Name);
 
             var character = new Character()
             {

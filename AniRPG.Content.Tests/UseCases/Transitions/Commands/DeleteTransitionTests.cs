@@ -12,7 +12,7 @@ namespace AniRPG.Content.Tests.UseCases.Transitions.Commands
         [Fact]
         public async Task Ok()
         {
-            int deletedTransitionId = -1;
+            var deletedTransitionId = -1;
             var transitionRepositoryMock = new Mock<IContentTransitionRepository>();
             transitionRepositoryMock
                 .Setup(a => a.DeleteEntity(1))
